@@ -855,7 +855,7 @@ bool isValidState(const State &s, const PlannerConfig &planner_config,
   R_mat << cy * cp, -sy, cy * sp, sy * cp, cy, sy * sp, -sp, 0, cp;
 
   // Compute the collision points in the world frame
-  Eigen::Matrix<double, 3, planner_config.num_collision_points>
+  Eigen::Matrix<double, 3, 5>
       collision_points_world =
           R_mat * planner_config.collision_points_body +
           s.pos.replicate(1, planner_config.num_collision_points);
@@ -888,7 +888,7 @@ bool isValidState(const State &s, const PlannerConfig &planner_config,
   max_valid_z = std::numeric_limits<double>::max();
 
   // Compute the reachability points in the world frame
-  Eigen::Matrix<double, 3, planner_config.num_reachability_points>
+  Eigen::Matrix<double, 3, 4>
       reachability_points_world =
           R_mat * planner_config.reachability_points_body +
           s.pos.replicate(1, planner_config.num_reachability_points);
