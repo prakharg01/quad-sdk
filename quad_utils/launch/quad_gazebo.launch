@@ -1,4 +1,5 @@
 <launch>
+ <!-- Have to add solo -->
   <arg name="robot_type" default="spirit" />
   <arg name="multiple_robots" default="false" />
   <arg name="gui" default="false" />
