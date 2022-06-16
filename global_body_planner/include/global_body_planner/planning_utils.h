@@ -23,7 +23,7 @@
 // Uncomment to add visualization features
 // #define VISUALIZE_TREE
 // #define VISUALIZE_ALL_CANDIDATE_ACTIONS
-// #define PLOT_TRAJECTORIES
+//#define PLOT_TRAJECTORIES
 // #define DEBUG_REFINE_STATE
 // #define DEBUG_INVALID_STATE
 // #define DEBUG_SOLVE_RESULT
@@ -80,10 +80,10 @@ struct PlannerConfig {
   static const int num_collision_points =
       5;  // Number of points on body used to check for collisions
 
-  Eigen::Matrix<double, 3, num_reachability_points>
+  Eigen::Matrix<double, 3, 4>
       reachability_points_body;  // Positions of reachability points in thebody
                                  // frame
-  Eigen::Matrix<double, 3, num_collision_points>
+  Eigen::Matrix<double, 3, 5>
       collision_points_body;  // Positions of collision points in the bodyframe
 
   /**
