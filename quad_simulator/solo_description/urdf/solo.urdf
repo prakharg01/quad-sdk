@@ -5,6 +5,17 @@
 <!-- =================================================================================== -->
 <robot name="solo" xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller" xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface" xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor">
   <!-- This file is based on: https://atlas.is.localnet/confluence/display/AMDW/Quadruped+URDF+Files -->
+
+  <!-- ros_control plugin -->
+  <gazebo>
+    <plugin filename="libgazebo_ros_control.so" name="gazebo_ros_control">
+      <robotNamespace>/solo</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+    </plugin>
+    <plugin filename="libground_truth_estimator.so" name="ground_truth_estimator">
+      <updateRateHZ>500.0</updateRateHZ>
+    </plugin>
+  </gazebo>
   <link name="base_link">
     <!-- BASE LINK INERTIAL -->
     <inertial>
@@ -39,6 +50,26 @@
       <restitution value="0.5"/>
     </contact>
   </link>
+
+  <gazebo reference="base_link">
+    <gravity>true</gravity>
+    <sensor name="imu_sensor" type="imu">
+      <always_on>true</always_on>
+      <visualize>true</visualize>
+      <topic>__default_topic_</topic>
+      <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+        <topicName>imu</topicName>
+        <bodyName>body</bodyName>
+        <updateRateHZ>500.0</updateRateHZ>
+        <gaussianNoise>0.0</gaussianNoise>
+        <xyzOffset>0 0 0</xyzOffset>
+        <rpyOffset>0 0 0</rpyOffset>
+        <frameName>body</frameName>
+        <initialOrientationAsReference>true</initialOrientationAsReference>
+      </plugin>
+      <pose>0 0 0 0 0 0</pose>
+    </sensor>
+  </gazebo>
   <!-- END BASE LINK -->
   <joint name="FL_HAA" type="revolute">
     <parent link="base_link"/>
@@ -50,6 +81,17 @@
     <!-- pybullet simulation parameters -->
     <dynamics damping="0.0" friction="0.0"/>
   </joint>
+  <!-- Transmission elements required for Gazebo -->
+  <transmission name="transmission_FL_HAA">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="FL_HAA">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_FL_HAA">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
   <link name="FL_SHOULDER">
     <!-- TODO: Update inertias. -->
     <!-- create a dummy shoulder link to join the two joints -->
@@ -80,6 +122,9 @@
       <inertia ixx="0.00003024" ixy="0.00004671" ixz="0.0" iyy="0.00041193" iyz="0.0" izz="0.00041107"/>
     </inertial>
   </link>
+  <gazebo reference="FL_SHOULDER">
+    <material>Gazebo/Gray</material>
+  </gazebo>
   <joint name="FL_HFE" type="revolute">
     <parent link="FL_SHOULDER"/>
     <child link="FL_UPPER_LEG"/>
@@ -90,6 +135,16 @@
     <!-- pybullet simulation parameters -->
     <dynamics damping="0.0" friction="0.0"/>
   </joint>
+  <transmission name="transmission_FL_HFE">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="FL_HFE">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_FL_HFE">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
   <link name="FL_UPPER_LEG">
     <!-- Left upper leg inertia -->
     <inertial>
@@ -123,6 +178,9 @@
       <restitution value="0.5"/>
     </contact>
   </link>
+  <gazebo reference="FL_UPPER_LEG">
+    <material>Gazebo/Gray</material>
+  </gazebo>
   <!-- END UPPER LEG LINK -->
   <!-- KFE: Joint between the upper leg and the lower leg -->
   <joint name="FL_KFE" type="revolute">
@@ -135,6 +193,16 @@
     <!-- pybullet simulation parameters -->
     <dynamics damping="0.0" friction="0.0"/>
   </joint>
+  <transmission name="transmission_FL_KFE">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="FL_KFE">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_FL_KFE">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
   <link name="FL_LOWER_LEG">
     <!-- Left lower leg inertia -->
     <inertial>
@@ -168,6 +236,9 @@
       <restitution value="0.5"/>
     </contact>
   </link>
+  <gazebo reference="FL_LOWER_LEG">
+    <material>Gazebo/Gray</material>
+  </gazebo>
   <!-- END LOWER LEG LINK -->
   <!-- KFE: Joint between the upper leg and the lower leg -->
   <joint name="FL_ANKLE" type="fixed">
@@ -179,6 +250,16 @@
     <!-- pybullet simulation parameters -->
     <dynamics damping="0.0" friction="0.0"/>
   </joint>
+  <transmission name="transmission_FL_ANKLE">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="FL_ANKLE">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_FL_ANKLE">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
   <link name="FL_FOOT">
     <!-- FOOT INERTIAL -->
     <!-- This link is symmetrical left or right -->
@@ -213,6 +294,9 @@
       <restitution value="0.5"/>
     </contact>
   </link>
+  <gazebo reference="FL_FOOT">
+    <material>Gazebo/Gray</material>
+  </gazebo>
   <!-- END LOWER LEG LINK -->
   <joint name="FR_HAA" type="revolute">
     <parent link="base_link"/>
@@ -224,6 +308,16 @@
     <!-- pybullet simulation parameters -->
     <dynamics damping="0.0" friction="0.0"/>
   </joint>
+  <transmission name="transmission_FR_HAA">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="FR_HAA">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_FR_HAA">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
   <link name="FR_SHOULDER">
     <!-- TODO: Update inertias. -->
     <!-- create a dummy shoulder link to join the two joints -->
@@ -254,6 +348,9 @@
       <inertia ixx="0.00003024" ixy="-0.00004671" ixz="0.0" iyy="0.00041193" iyz="0.0" izz="0.00041107"/>
     </inertial>
   </link>
+  <gazebo reference="FR_SHOULDER">
+    <material>Gazebo/Gray</material>
+  </gazebo>
   <joint name="FR_HFE" type="revolute">
     <parent link="FR_SHOULDER"/>
     <child link="FR_UPPER_LEG"/>
@@ -264,6 +361,16 @@
     <!-- pybullet simulation parameters -->
     <dynamics damping="0.0" friction="0.0"/>
   </joint>
+  <transmission name="transmission_FR_HFE">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="FR_HFE">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_FR_HFE">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
   <link name="FR_UPPER_LEG">
     <!-- Right upper leg inertia -->
     <inertial>
@@ -297,6 +404,9 @@
       <restitution value="0.5"/>
     </contact>
   </link>
+  <gazebo reference="FR_UPPER_LEG">
+    <material>Gazebo/Gray</material>
+  </gazebo>
   <!-- END UPPER LEG LINK -->
   <!-- KFE: Joint between the upper leg and the lower leg -->
   <joint name="FR_KFE" type="revolute">
@@ -309,6 +419,16 @@
     <!-- pybullet simulation parameters -->
     <dynamics damping="0.0" friction="0.0"/>
   </joint>
+  <transmission name="transmission_FR_KFE">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="FR_KFE">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_FR_KFE">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
   <link name="FR_LOWER_LEG">
     <!-- Right lower leg inertia -->
     <inertial>
@@ -342,6 +462,9 @@
       <restitution value="0.5"/>
     </contact>
   </link>
+  <gazebo reference="FR_LOWER_LEG">
+    <material>Gazebo/Gray</material>
+  </gazebo>
   <!-- END LOWER LEG LINK -->
   <!-- KFE: Joint between the upper leg and the lower leg -->
   <joint name="FR_ANKLE" type="fixed">
@@ -353,6 +476,16 @@
     <!-- pybullet simulation parameters -->
     <dynamics damping="0.0" friction="0.0"/>
   </joint>
+  <transmission name="transmission_FR_ANKLE">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="FR_ANKLE">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_FR_ANKLE">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
   <link name="FR_FOOT">
     <!-- FOOT INERTIAL -->
     <!-- This link is symmetrical left or right -->
@@ -387,6 +520,9 @@
       <restitution value="0.5"/>
     </contact>
   </link>
+  <gazebo reference="FR_FOOT">
+    <material>Gazebo/Gray</material>
+  </gazebo>
   <!-- END LOWER LEG LINK -->
   <joint name="HL_HAA" type="revolute">
     <parent link="base_link"/>
@@ -398,6 +534,16 @@
     <!-- pybullet simulation parameters -->
     <dynamics damping="0.0" friction="0.0"/>
   </joint>
+  <transmission name="transmission_HL_HAA">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="HL_HAA">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_HL_HAA">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
   <link name="HL_SHOULDER">
     <!-- TODO: Update inertias. -->
     <!-- create a dummy shoulder link to join the two joints -->
@@ -428,6 +574,9 @@
       <inertia ixx="0.00003024" ixy="0.00004671" ixz="0.0" iyy="0.00041193" iyz="0.0" izz="0.00041107"/>
     </inertial>
   </link>
+  <gazebo reference="HL_SHOULDER">
+    <material>Gazebo/Gray</material>
+  </gazebo>
   <joint name="HL_HFE" type="revolute">
     <parent link="HL_SHOULDER"/>
     <child link="HL_UPPER_LEG"/>
@@ -438,6 +587,16 @@
     <!-- pybullet simulation parameters -->
     <dynamics damping="0.0" friction="0.0"/>
   </joint>
+  <transmission name="transmission_HL_HFE">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="HL_HFE">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_HL_HFE">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
   <link name="HL_UPPER_LEG">
     <!-- Left upper leg inertia -->
     <inertial>
@@ -471,6 +630,9 @@
       <restitution value="0.5"/>
     </contact>
   </link>
+  <gazebo reference="HL_UPPER_LEG">
+    <material>Gazebo/Gray</material>
+  </gazebo>
   <!-- END UPPER LEG LINK -->
   <!-- KFE: Joint between the upper leg and the lower leg -->
   <joint name="HL_KFE" type="revolute">
@@ -483,6 +645,16 @@
     <!-- pybullet simulation parameters -->
     <dynamics damping="0.0" friction="0.0"/>
   </joint>
+  <transmission name="transmission_HL_KFE">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="HL_KFE">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_HL_KFE">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
   <link name="HL_LOWER_LEG">
     <!-- Left lower leg inertia -->
     <inertial>
@@ -516,6 +688,9 @@
       <restitution value="0.5"/>
     </contact>
   </link>
+  <gazebo reference="HL_LOWER_LEG">
+    <material>Gazebo/Gray</material>
+  </gazebo>
   <!-- END LOWER LEG LINK -->
   <!-- KFE: Joint between the upper leg and the lower leg -->
   <joint name="HL_ANKLE" type="fixed">
@@ -527,6 +702,16 @@
     <!-- pybullet simulation parameters -->
     <dynamics damping="0.0" friction="0.0"/>
   </joint>
+  <transmission name="transmission_HL_ANKLE">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="HL_ANKLE">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_HL_ANKLE">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
   <link name="HL_FOOT">
     <!-- FOOT INERTIAL -->
     <!-- This link is symmetrical left or right -->
@@ -561,6 +746,9 @@
       <restitution value="0.5"/>
     </contact>
   </link>
+  <gazebo reference="HL_FOOT">
+    <material>Gazebo/Gray</material>
+  </gazebo>
   <!-- END LOWER LEG LINK -->
   <joint name="HR_HAA" type="revolute">
     <parent link="base_link"/>
@@ -572,6 +760,16 @@
     <!-- pybullet simulation parameters -->
     <dynamics damping="0.0" friction="0.0"/>
   </joint>
+  <transmission name="transmission_HR_HAA">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="HR_HAA">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_HR_HAA">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
   <link name="HR_SHOULDER">
     <!-- TODO: Update inertias. -->
     <!-- create a dummy shoulder link to join the two joints -->
@@ -602,6 +800,9 @@
       <inertia ixx="0.00003024" ixy="-0.00004671" ixz="0.0" iyy="0.00041193" iyz="0.0" izz="0.00041107"/>
     </inertial>
   </link>
+  <gazebo reference="HR_SHOULDER">
+    <material>Gazebo/Gray</material>
+  </gazebo>
   <joint name="HR_HFE" type="revolute">
     <parent link="HR_SHOULDER"/>
     <child link="HR_UPPER_LEG"/>
@@ -612,6 +813,16 @@
     <!-- pybullet simulation parameters -->
     <dynamics damping="0.0" friction="0.0"/>
   </joint>
+   <transmission name="transmission_HR_HFE">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="HR_HFE">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_HR_HFE">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
   <link name="HR_UPPER_LEG">
     <!-- Right upper leg inertia -->
     <inertial>
@@ -645,6 +856,9 @@
       <restitution value="0.5"/>
     </contact>
   </link>
+  <gazebo reference="HR_UPPER_LEG">
+    <material>Gazebo/Gray</material>
+  </gazebo>
   <!-- END UPPER LEG LINK -->
   <!-- KFE: Joint between the upper leg and the lower leg -->
   <joint name="HR_KFE" type="revolute">
@@ -657,6 +871,16 @@
     <!-- pybullet simulation parameters -->
     <dynamics damping="0.0" friction="0.0"/>
   </joint>
+  <transmission name="transmission_HR_KFE">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="HR_KFE">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_HR_KFE">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
   <link name="HR_LOWER_LEG">
     <!-- Right lower leg inertia -->
     <inertial>
@@ -690,6 +914,9 @@
       <restitution value="0.5"/>
     </contact>
   </link>
+   <gazebo reference="HR_LOWER_LEG">
+    <material>Gazebo/Gray</material>
+  </gazebo>
   <!-- END LOWER LEG LINK -->
   <!-- KFE: Joint between the upper leg and the lower leg -->
   <joint name="HR_ANKLE" type="fixed">
@@ -701,6 +928,16 @@
     <!-- pybullet simulation parameters -->
     <dynamics damping="0.0" friction="0.0"/>
   </joint>
+  <transmission name="transmission_HR_ANKLE">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="HR_ANKLE">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_HR_ANKLE">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
   <link name="HR_FOOT">
     <!-- FOOT INERTIAL -->
     <!-- This link is symmetrical left or right -->
@@ -735,5 +972,8 @@
       <restitution value="0.5"/>
     </contact>
   </link>
+  <gazebo reference="HR_FOOT">
+    <material>Gazebo/Gray</material>
+  </gazebo>
   <!-- END LOWER LEG LINK -->
 </robot>
