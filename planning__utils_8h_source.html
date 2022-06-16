@@ -94,7 +94,7 @@ $(function() {
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">// Uncomment to add visualization features</span></div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">// #define VISUALIZE_TREE</span></div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">// #define VISUALIZE_ALL_CANDIDATE_ACTIONS</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">// #define PLOT_TRAJECTORIES</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">//#define PLOT_TRAJECTORIES</span></div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">// #define DEBUG_REFINE_STATE</span></div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">// #define DEBUG_INVALID_STATE</span></div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">// #define DEBUG_SOLVE_RESULT</span></div>
@@ -148,10 +148,10 @@ $(function() {
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>  <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> num_collision_points =</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>      5;  <span class="comment">// Number of points on body used to check for collisions</span></div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>  Eigen::Matrix&lt;double, 3, num_reachability_points&gt;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>  Eigen::Matrix&lt;double, 3, 4&gt;</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>      reachability_points_body;  <span class="comment">// Positions of reachability points in thebody</span></div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                                 <span class="comment">// frame</span></div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>  Eigen::Matrix&lt;double, 3, num_collision_points&gt;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>  Eigen::Matrix&lt;double, 3, 5&gt;</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>      collision_points_body;  <span class="comment">// Positions of collision points in the bodyframe</span></div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="structplanning__utils_1_1PlannerConfig.html#a426ef7480850ae551b5bfb2cb918b1d4">   93</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="structplanning__utils_1_1PlannerConfig.html#a426ef7480850ae551b5bfb2cb918b1d4">loadEigenVectorsFromParams</a>() {</div>
