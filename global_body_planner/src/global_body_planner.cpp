@@ -381,7 +381,6 @@ void GlobalBodyPlanner::publishCurrentPlan() {
 
     // Load the plan into the messages
     current_plan_.convertToMsg(robot_plan_msg, discrete_robot_plan_msg);
-
     // Publish both messages
     body_plan_pub_.publish(robot_plan_msg);
     discrete_body_plan_pub_.publish(discrete_robot_plan_msg);
@@ -401,17 +400,18 @@ void GlobalBodyPlanner::spin() {
   while (ros::ok()) {
     // Process callbacks
     ros::spinOnce();
-
+    std::cout << "before start and goal" << std::endl;
     // Set the start and goal states
     setStartState();
     setGoalState();
+    std::cout << "after start and goal" <<std::endl;
 
     // Call the planner
     callPlanner();
-
+    std::cout<<"before publish"<<std::endl;
     // Publish the results if valid
     publishCurrentPlan();
-
+   std::cout<<"after publish"<<std::endl;
     r.sleep();
   }
 }
