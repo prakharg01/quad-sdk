@@ -28,7 +28,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robot_properties_solo/resources/meshes/stl/solo12/solo_12_base.stl"/>
+        <mesh filename="file:///home/prakhargoel/Desktop/Mitacs/QuadSdk/catkin_ws/src/quad-sdk/quad_simulator/solo_description/meshes/stl/solo12/solo_12_base.stl"/>
       </geometry>
       <material name="grey">
         <color rgba="0.8 0.8 0.8 1.0"/>
@@ -38,7 +38,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robot_properties_solo/resources/meshes/stl/solo12/solo_12_base.stl"/>
+        <mesh filename="file:///home/prakhargoel/Desktop/Mitacs/QuadSdk/catkin_ws/src/quad-sdk/quad_simulator/solo_description/meshes/stl/solo12/solo_12_base.stl"/>
       </geometry>
       <material name="grey">
         <color rgba="0.8 0.8 0.8 1.0"/>
@@ -99,7 +99,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0.01950 0 0"/>
       <geometry>
-        <mesh filename="package://robot_properties_solo/resources/meshes/stl/solo12/solo12_hip_fe_fl.stl"/>
+        <mesh filename="file:///home/prakhargoel/Desktop/Mitacs/QuadSdk/catkin_ws/src/quad-sdk/quad_simulator/solo_description/meshes/stl/solo12/solo12_hip_fe_fl.stl"/>
       </geometry>
       <material name="grey">
         <color rgba="0.8 0.8 0.8 1.0"/>
@@ -109,7 +109,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0.01950 0 0"/>
       <geometry>
-        <mesh filename="package://robot_properties_solo/resources/meshes/stl/solo12/solo12_hip_fe_fl.stl"/>
+        <mesh filename="file:///home/prakhargoel/Desktop/Mitacs/QuadSdk/catkin_ws/src/quad-sdk/quad_simulator/solo_description/meshes/stl/solo12/solo12_hip_fe_fl.stl"/>
       </geometry>
       <material name="grey">
         <color rgba="0.8 0.8 0.8 1.0"/>
@@ -156,7 +156,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robot_properties_solo/resources/meshes/stl/with_foot/solo_upper_leg_left_side.stl"/>
+        <mesh filename="file:///home/prakhargoel/Desktop/Mitacs/QuadSdk/catkin_ws/src/quad-sdk/quad_simulator/solo_description/meshes/stl/with_foot/solo_upper_leg_left_side.stl"/>
       </geometry>
       <material name="grey">
         <color rgba="0.8 0.8 0.8 1.0"/>
@@ -166,7 +166,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robot_properties_solo/resources/meshes/stl/with_foot/solo_upper_leg_left_side.stl"/>
+        <mesh filename="file:///home/prakhargoel/Desktop/Mitacs/QuadSdk/catkin_ws/src/quad-sdk/quad_simulator/solo_description/meshes/stl/with_foot/solo_upper_leg_left_side.stl"/>
       </geometry>
       <material name="grey">
         <color rgba="0.8 0.8 0.8 1.0"/>
@@ -214,7 +214,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robot_properties_solo/resources/meshes/stl/with_foot/solo_lower_leg_left_side.stl"/>
+        <mesh filename="file:///home/prakhargoel/Desktop/Mitacs/QuadSdk/catkin_ws/src/quad-sdk/quad_simulator/solo_description/meshes/stl/with_foot/solo_lower_leg_left_side.stl"/>
       </geometry>
       <material name="grey">
         <color rgba="0.8 0.8 0.8 1.0"/>
@@ -224,7 +224,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robot_properties_solo/resources/meshes/stl/with_foot/solo_lower_leg_left_side.stl"/>
+        <mesh filename="file:///home/prakhargoel/Desktop/Mitacs/QuadSdk/catkin_ws/src/quad-sdk/quad_simulator/solo_description/meshes/stl/with_foot/solo_lower_leg_left_side.stl"/>
       </geometry>
       <material name="grey">
         <color rgba="0.8 0.8 0.8 1.0"/>
@@ -250,16 +250,7 @@
     <!-- pybullet simulation parameters -->
     <dynamics damping="0.0" friction="0.0"/>
   </joint>
-  <transmission name="transmission_FL_ANKLE">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="FL_ANKLE">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="motor_FL_ANKLE">
-      <hardwareInterface>EffortJointInterface</hardwareInterface>
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
+
   <link name="FL_FOOT">
     <!-- FOOT INERTIAL -->
     <!-- This link is symmetrical left or right -->
@@ -272,7 +263,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robot_properties_solo/resources/meshes/stl/with_foot/solo_foot.stl"/>
+        <mesh filename="file:///home/prakhargoel/Desktop/Mitacs/QuadSdk/catkin_ws/src/quad-sdk/quad_simulator/solo_description/meshes/stl/with_foot/solo_foot.stl"/>
       </geometry>
       <material name="grey">
         <color rgba="0.8 0.8 0.8 1.0"/>
@@ -282,7 +273,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robot_properties_solo/resources/meshes/stl/with_foot/solo_foot.stl"/>
+        <mesh filename="file:///home/prakhargoel/Desktop/Mitacs/QuadSdk/catkin_ws/src/quad-sdk/quad_simulator/solo_description/meshes/stl/with_foot/solo_foot.stl"/>
       </geometry>
       <material name="grey">
         <color rgba="0.8 0.8 0.8 1.0"/>
@@ -294,9 +285,7 @@
       <restitution value="0.5"/>
     </contact>
   </link>
-  <gazebo reference="FL_FOOT">
-    <material>Gazebo/Gray</material>
-  </gazebo>
+
   <!-- END LOWER LEG LINK -->
   <joint name="FR_HAA" type="revolute">
     <parent link="base_link"/>
@@ -325,7 +314,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0.01950 0 0"/>
       <geometry>
-        <mesh filename="package://robot_properties_solo/resources/meshes/stl/solo12/solo12_hip_fe_fr.stl"/>
+        <mesh filename="file:///home/prakhargoel/Desktop/Mitacs/QuadSdk/catkin_ws/src/quad-sdk/quad_simulator/solo_description/meshes/stl/solo12/solo12_hip_fe_fr.stl"/>
       </geometry>
       <material name="grey">
         <color rgba="0.8 0.8 0.8 1.0"/>
@@ -335,7 +324,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0.01950 0 0"/>
       <geometry>
-        <mesh filename="package://robot_properties_solo/resources/meshes/stl/solo12/solo12_hip_fe_fr.stl"/>
+        <mesh filename="file:///home/prakhargoel/Desktop/Mitacs/QuadSdk/catkin_ws/src/quad-sdk/quad_simulator/solo_description/meshes/stl/solo12/solo12_hip_fe_fr.stl"/>
       </geometry>
       <material name="grey">
         <color rgba="0.8 0.8 0.8 1.0"/>
@@ -382,7 +371,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robot_properties_solo/resources/meshes/stl/with_foot/solo_upper_leg_right_side.stl"/>
+        <mesh filename="file:///home/prakhargoel/Desktop/Mitacs/QuadSdk/catkin_ws/src/quad-sdk/quad_simulator/solo_description/meshes/stl/with_foot/solo_upper_leg_right_side.stl"/>
       </geometry>
       <material name="grey">
         <color rgba="0.8 0.8 0.8 1.0"/>
@@ -392,7 +381,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robot_properties_solo/resources/meshes/stl/with_foot/solo_upper_leg_right_side.stl"/>
+        <mesh filename="file:///home/prakhargoel/Desktop/Mitacs/QuadSdk/catkin_ws/src/quad-sdk/quad_simulator/solo_description/meshes/stl/with_foot/solo_upper_leg_right_side.stl"/>
       </geometry>
       <material name="grey">
         <color rgba="0.8 0.8 0.8 1.0"/>
@@ -440,7 +429,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robot_properties_solo/resources/meshes/stl/with_foot/solo_lower_leg_right_side.stl"/>
+        <mesh filename="file:///home/prakhargoel/Desktop/Mitacs/QuadSdk/catkin_ws/src/quad-sdk/quad_simulator/solo_description/meshes/stl/with_foot/solo_lower_leg_right_side.stl"/>
       </geometry>
       <material name="grey">
         <color rgba="0.8 0.8 0.8 1.0"/>
@@ -450,7 +439,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robot_properties_solo/resources/meshes/stl/with_foot/solo_lower_leg_right_side.stl"/>
+        <mesh filename="file:///home/prakhargoel/Desktop/Mitacs/QuadSdk/catkin_ws/src/quad-sdk/quad_simulator/solo_description/meshes/stl/with_foot/solo_lower_leg_right_side.stl"/>
       </geometry>
       <material name="grey">
         <color rgba="0.8 0.8 0.8 1.0"/>
@@ -476,16 +465,7 @@
     <!-- pybullet simulation parameters -->
     <dynamics damping="0.0" friction="0.0"/>
   </joint>
-  <transmission name="transmission_FR_ANKLE">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="FR_ANKLE">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="motor_FR_ANKLE">
-      <hardwareInterface>EffortJointInterface</hardwareInterface>
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
+  
   <link name="FR_FOOT">
     <!-- FOOT INERTIAL -->
     <!-- This link is symmetrical left or right -->
@@ -498,7 +478,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robot_properties_solo/resources/meshes/stl/with_foot/solo_foot.stl"/>
+        <mesh filename="file:///home/prakhargoel/Desktop/Mitacs/QuadSdk/catkin_ws/src/quad-sdk/quad_simulator/solo_description/meshes/stl/with_foot/solo_foot.stl"/>
       </geometry>
       <material name="grey">
         <color rgba="0.8 0.8 0.8 1.0"/>
@@ -508,7 +488,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robot_properties_solo/resources/meshes/stl/with_foot/solo_foot.stl"/>
+        <mesh filename="file:///home/prakhargoel/Desktop/Mitacs/QuadSdk/catkin_ws/src/quad-sdk/quad_simulator/solo_description/meshes/stl/with_foot/solo_foot.stl"/>
       </geometry>
       <material name="grey">
         <color rgba="0.8 0.8 0.8 1.0"/>
@@ -520,9 +500,7 @@
       <restitution value="0.5"/>
     </contact>
   </link>
-  <gazebo reference="FR_FOOT">
-    <material>Gazebo/Gray</material>
-  </gazebo>
+  
   <!-- END LOWER LEG LINK -->
   <joint name="HL_HAA" type="revolute">
     <parent link="base_link"/>
@@ -551,7 +529,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="-0.01950 0 0"/>
       <geometry>
-        <mesh filename="package://robot_properties_solo/resources/meshes/stl/solo12/solo12_hip_fe_hl.stl"/>
+        <mesh filename="file:///home/prakhargoel/Desktop/Mitacs/QuadSdk/catkin_ws/src/quad-sdk/quad_simulator/solo_description/meshes/stl/solo12/solo12_hip_fe_hl.stl"/>
       </geometry>
       <material name="grey">
         <color rgba="0.8 0.8 0.8 1.0"/>
@@ -561,7 +539,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="-0.01950 0 0"/>
       <geometry>
-        <mesh filename="package://robot_properties_solo/resources/meshes/stl/solo12/solo12_hip_fe_hl.stl"/>
+        <mesh filename="file:///home/prakhargoel/Desktop/Mitacs/QuadSdk/catkin_ws/src/quad-sdk/quad_simulator/solo_description/meshes/stl/solo12/solo12_hip_fe_hl.stl"/>
       </geometry>
       <material name="grey">
         <color rgba="0.8 0.8 0.8 1.0"/>
@@ -608,7 +586,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robot_properties_solo/resources/meshes/stl/with_foot/solo_upper_leg_left_side.stl"/>
+        <mesh filename="file:///home/prakhargoel/Desktop/Mitacs/QuadSdk/catkin_ws/src/quad-sdk/quad_simulator/solo_description/meshes/stl/with_foot/solo_upper_leg_left_side.stl"/>
       </geometry>
       <material name="grey">
         <color rgba="0.8 0.8 0.8 1.0"/>
@@ -618,7 +596,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robot_properties_solo/resources/meshes/stl/with_foot/solo_upper_leg_left_side.stl"/>
+        <mesh filename="file:///home/prakhargoel/Desktop/Mitacs/QuadSdk/catkin_ws/src/quad-sdk/quad_simulator/solo_description/meshes/stl/with_foot/solo_upper_leg_left_side.stl"/>
       </geometry>
       <material name="grey">
         <color rgba="0.8 0.8 0.8 1.0"/>
@@ -666,7 +644,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robot_properties_solo/resources/meshes/stl/with_foot/solo_lower_leg_left_side.stl"/>
+        <mesh filename="file:///home/prakhargoel/Desktop/Mitacs/QuadSdk/catkin_ws/src/quad-sdk/quad_simulator/solo_description/meshes/stl/with_foot/solo_lower_leg_left_side.stl"/>
       </geometry>
       <material name="grey">
         <color rgba="0.8 0.8 0.8 1.0"/>
@@ -676,7 +654,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robot_properties_solo/resources/meshes/stl/with_foot/solo_lower_leg_left_side.stl"/>
+        <mesh filename="file:///home/prakhargoel/Desktop/Mitacs/QuadSdk/catkin_ws/src/quad-sdk/quad_simulator/solo_description/meshes/stl/with_foot/solo_lower_leg_left_side.stl"/>
       </geometry>
       <material name="grey">
         <color rgba="0.8 0.8 0.8 1.0"/>
@@ -702,16 +680,7 @@
     <!-- pybullet simulation parameters -->
     <dynamics damping="0.0" friction="0.0"/>
   </joint>
-  <transmission name="transmission_HL_ANKLE">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="HL_ANKLE">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="motor_HL_ANKLE">
-      <hardwareInterface>EffortJointInterface</hardwareInterface>
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
+
   <link name="HL_FOOT">
     <!-- FOOT INERTIAL -->
     <!-- This link is symmetrical left or right -->
@@ -724,7 +693,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robot_properties_solo/resources/meshes/stl/with_foot/solo_foot.stl"/>
+        <mesh filename="file:///home/prakhargoel/Desktop/Mitacs/QuadSdk/catkin_ws/src/quad-sdk/quad_simulator/solo_description/meshes/stl/with_foot/solo_foot.stl"/>
       </geometry>
       <material name="grey">
         <color rgba="0.8 0.8 0.8 1.0"/>
@@ -734,7 +703,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robot_properties_solo/resources/meshes/stl/with_foot/solo_foot.stl"/>
+        <mesh filename="file:///home/prakhargoel/Desktop/Mitacs/QuadSdk/catkin_ws/src/quad-sdk/quad_simulator/solo_description/meshes/stl/with_foot/solo_foot.stl"/>
       </geometry>
       <material name="grey">
         <color rgba="0.8 0.8 0.8 1.0"/>
@@ -746,9 +715,7 @@
       <restitution value="0.5"/>
     </contact>
   </link>
-  <gazebo reference="HL_FOOT">
-    <material>Gazebo/Gray</material>
-  </gazebo>
+
   <!-- END LOWER LEG LINK -->
   <joint name="HR_HAA" type="revolute">
     <parent link="base_link"/>
@@ -777,7 +744,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="-0.01950 0 0"/>
       <geometry>
-        <mesh filename="package://robot_properties_solo/resources/meshes/stl/solo12/solo12_hip_fe_hr.stl"/>
+        <mesh filename="file:///home/prakhargoel/Desktop/Mitacs/QuadSdk/catkin_ws/src/quad-sdk/quad_simulator/solo_description/meshes/stl/solo12/solo12_hip_fe_hr.stl"/>
       </geometry>
       <material name="grey">
         <color rgba="0.8 0.8 0.8 1.0"/>
@@ -787,7 +754,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="-0.01950 0 0"/>
       <geometry>
-        <mesh filename="package://robot_properties_solo/resources/meshes/stl/solo12/solo12_hip_fe_hr.stl"/>
+        <mesh filename="file:///home/prakhargoel/Desktop/Mitacs/QuadSdk/catkin_ws/src/quad-sdk/quad_simulator/solo_description/meshes/stl/solo12/solo12_hip_fe_hr.stl"/>
       </geometry>
       <material name="grey">
         <color rgba="0.8 0.8 0.8 1.0"/>
@@ -834,7 +801,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robot_properties_solo/resources/meshes/stl/with_foot/solo_upper_leg_right_side.stl"/>
+        <mesh filename="file:///home/prakhargoel/Desktop/Mitacs/QuadSdk/catkin_ws/src/quad-sdk/quad_simulator/solo_description/meshes/stl/with_foot/solo_upper_leg_right_side.stl"/>
       </geometry>
       <material name="grey">
         <color rgba="0.8 0.8 0.8 1.0"/>
@@ -844,7 +811,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robot_properties_solo/resources/meshes/stl/with_foot/solo_upper_leg_right_side.stl"/>
+        <mesh filename="file:///home/prakhargoel/Desktop/Mitacs/QuadSdk/catkin_ws/src/quad-sdk/quad_simulator/solo_description/meshes/stl/with_foot/solo_upper_leg_right_side.stl"/>
       </geometry>
       <material name="grey">
         <color rgba="0.8 0.8 0.8 1.0"/>
@@ -892,7 +859,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robot_properties_solo/resources/meshes/stl/with_foot/solo_lower_leg_right_side.stl"/>
+        <mesh filename="file:///home/prakhargoel/Desktop/Mitacs/QuadSdk/catkin_ws/src/quad-sdk/quad_simulator/solo_description/meshes/stl/with_foot/solo_lower_leg_right_side.stl"/>
       </geometry>
       <material name="grey">
         <color rgba="0.8 0.8 0.8 1.0"/>
@@ -902,7 +869,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robot_properties_solo/resources/meshes/stl/with_foot/solo_lower_leg_right_side.stl"/>
+        <mesh filename="file:///home/prakhargoel/Desktop/Mitacs/QuadSdk/catkin_ws/src/quad-sdk/quad_simulator/solo_description/meshes/stl/with_foot/solo_lower_leg_right_side.stl"/>
       </geometry>
       <material name="grey">
         <color rgba="0.8 0.8 0.8 1.0"/>
@@ -928,16 +895,7 @@
     <!-- pybullet simulation parameters -->
     <dynamics damping="0.0" friction="0.0"/>
   </joint>
-  <transmission name="transmission_HR_ANKLE">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="HR_ANKLE">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="motor_HR_ANKLE">
-      <hardwareInterface>EffortJointInterface</hardwareInterface>
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
+  
   <link name="HR_FOOT">
     <!-- FOOT INERTIAL -->
     <!-- This link is symmetrical left or right -->
@@ -950,7 +908,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robot_properties_solo/resources/meshes/stl/with_foot/solo_foot.stl"/>
+        <mesh filename="file:///home/prakhargoel/Desktop/Mitacs/QuadSdk/catkin_ws/src/quad-sdk/quad_simulator/solo_description/meshes/stl/with_foot/solo_foot.stl"/>
       </geometry>
       <material name="grey">
         <color rgba="0.8 0.8 0.8 1.0"/>
@@ -960,7 +918,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robot_properties_solo/resources/meshes/stl/with_foot/solo_foot.stl"/>
+        <mesh filename="file:///home/prakhargoel/Desktop/Mitacs/QuadSdk/catkin_ws/src/quad-sdk/quad_simulator/solo_description/meshes/stl/with_foot/solo_foot.stl"/>
       </geometry>
       <material name="grey">
         <color rgba="0.8 0.8 0.8 1.0"/>
@@ -972,8 +930,127 @@
       <restitution value="0.5"/>
     </contact>
   </link>
+
+
+  <gazebo reference="base_link">
+    <material>Gazebo/White</material>
+    <kp>10000000.0</kp>
+    <kd>1.0</kd>
+    <mu1>4.0</mu1>
+    <mu2>4.0</mu2>
+    <maxVel>0.0</maxVel>
+    <minDepth>0.001</minDepth>
+  </gazebo>
+  <gazebo reference="FR_UPPER_LEG">
+    <material>Gazebo/Grey</material>
+    <kp>10000000.0</kp>
+    <kd>1.0</kd>
+    <mu1>4.0</mu1>
+    <mu2>4.0</mu2>
+    <maxVel>0.0</maxVel>
+    <minDepth>0.001</minDepth>
+  </gazebo>
+  <gazebo reference="FR_LOWER_LEG">
+    <material>Gazebo/Grey</material>
+    <kp>10000000.0</kp>
+    <kd>1.0</kd>
+    <mu1>4.0</mu1>
+    <mu2>4.0</mu2>
+    <maxVel>0.0</maxVel>
+    <minDepth>0.001</minDepth>
+  </gazebo>
+  <gazebo reference="FR_FOOT">
+    <material>Gazebo/Grey</material>
+    <kp>10000000.0</kp>
+    <kd>1.0</kd>
+    <mu1>4.0</mu1>
+    <mu2>4.0</mu2>
+    <maxVel>0.0</maxVel>
+    <minDepth>0.001</minDepth>
+  </gazebo>
+  <gazebo reference="FL_UPPER_LEG">
+    <material>Gazebo/Grey</material>
+    <kp>10000000.0</kp>
+    <kd>1.0</kd>
+    <mu1>4.0</mu1>
+    <mu2>4.0</mu2>
+    <maxVel>0.0</maxVel>
+    <minDepth>0.001</minDepth>
+  </gazebo>
+  <gazebo reference="FL_LOWER_LEG">
+    <material>Gazebo/DarkGrey</material>
+    <kp>10000000.0</kp>
+    <kd>1.0</kd>
+    <mu1>4.0</mu1>
+    <mu2>4.0</mu2>
+    <maxVel>0.0</maxVel>
+    <minDepth>0.001</minDepth>
+  </gazebo>
+  <gazebo reference="FL_FOOT">
+    <material>Gazebo/DarkGrey</material>
+    <kp>10000000.0</kp>
+    <kd>1.0</kd>
+    <mu1>4.0</mu1>
+    <mu2>4.0</mu2>
+    <maxVel>0.0</maxVel>
+    <minDepth>0.001</minDepth>
+  </gazebo>
+  <gazebo reference="HL_UPPER_LEG">
+    <material>Gazebo/DarkGrey</material>
+    <kp>10000000.0</kp>
+    <kd>1.0</kd>
+    <mu1>4.0</mu1>
+    <mu2>4.0</mu2>
+    <maxVel>0.0</maxVel>
+    <minDepth>0.001</minDepth>
+  </gazebo>
+  <gazebo reference="HL_LOWER_LEG">
+    <material>Gazebo/DarkGrey</material>
+    <kp>10000000.0</kp>
+    <kd>1.0</kd>
+    <mu1>4.0</mu1>
+    <mu2>4.0</mu2>
+    <maxVel>0.0</maxVel>
+    <minDepth>0.001</minDepth>
+  </gazebo>
+  <gazebo reference="HL_FOOT">
+    <material>Gazebo/Grey</material>
+    <kp>10000000.0</kp>
+    <kd>1.0</kd>
+    <mu1>4.0</mu1>
+    <mu2>4.0</mu2>
+    <maxVel>0.0</maxVel>
+    <minDepth>0.001</minDepth>
+  </gazebo>
+  <gazebo reference="HR_UPPER_LEG">
+    <material>Gazebo/Grey</material>
+    <kp>10000000.0</kp>
+    <kd>1.0</kd>
+    <mu1>4.0</mu1>
+    <mu2>4.0</mu2>
+    <maxVel>0.0</maxVel>
+    <minDepth>0.001</minDepth>
+  </gazebo>
+  <gazebo reference="HR_LOWER_LEG">
+    <material>Gazebo/Grey</material>
+    <kp>10000000.0</kp>
+    <kd>1.0</kd>
+    <mu1>4.0</mu1>
+    <mu2>4.0</mu2>
+    <maxVel>0.0</maxVel>
+    <minDepth>0.001</minDepth>
+  </gazebo>
   <gazebo reference="HR_FOOT">
-    <material>Gazebo/Gray</material>
+    <material>Gazebo/Grey</material>
+    <kp>10000000.0</kp>
+    <kd>1.0</kd>
+    <mu1>4.0</mu1>
+    <mu2>4.0</mu2>
+    <maxVel>0.0</maxVel>
+    <minDepth>0.001</minDepth>
+  </gazebo>
+  <gazebo>
+    <self_collide>1</self_collide>
   </gazebo>
   <!-- END LOWER LEG LINK -->
 </robot>
