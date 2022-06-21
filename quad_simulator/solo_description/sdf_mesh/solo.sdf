@@ -318,7 +318,6 @@
       </visual>
       <velocity_decay/>
       <velocity_decay/>
-      <velocity_decay/>
       <gravity>1</gravity>
       <velocity_decay/>
     </link>
@@ -583,7 +582,6 @@
           </script>
         </material>
       </visual>
-      <velocity_decay/>
       <velocity_decay/>
       <velocity_decay/>
       <gravity>1</gravity>
@@ -852,7 +850,6 @@
       </visual>
       <velocity_decay/>
       <velocity_decay/>
-      <velocity_decay/>
       <gravity>1</gravity>
       <velocity_decay/>
     </link>
@@ -1117,7 +1114,6 @@
           </script>
         </material>
       </visual>
-      <velocity_decay/>
       <velocity_decay/>
       <velocity_decay/>
       <gravity>1</gravity>
