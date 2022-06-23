@@ -222,7 +222,7 @@ bool GlobalBodyPlanner::callPlanner() {
                                     state_sequence, action_sequence, tree_pub_);
   
     newest_plan_.setComputedTimestamp(ros::Time::now());
-    std::cout<<"found valid plan"<<std::endl;
+  
     if (plan_status != VALID && plan_status != VALID_PARTIAL) {
       if (plan_status == INVALID_START_STATE) {
         ROS_WARN_THROTTLE(1, "Invalid start state, exiting");
@@ -279,7 +279,7 @@ bool GlobalBodyPlanner::callPlanner() {
       ROS_INFO("partially valid and closer to the goal");
       is_updated = true;
     }
-    std::cout<<is_updated<<std::endl;
+  
     if (is_updated) {
       state_sequence_ = state_sequence;
       action_sequence_ = action_sequence;
