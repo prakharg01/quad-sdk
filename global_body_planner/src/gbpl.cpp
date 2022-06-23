@@ -162,7 +162,7 @@ int GBPL::findPlan(const PlannerConfig &planner_config, State s_start,
                    ros::Publisher &tree_pub) {
   // Perform validity checking on start and goal states
   if (!isValidState(s_start, planner_config, LEAP_STANCE)) {
-    return INVALID_START_STATE;
+    return INVALID_START_STATE; 
   }
   // Set goal height to nominal distance above terrain
   s_goal.pos[2] =

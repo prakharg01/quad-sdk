@@ -220,8 +220,9 @@ bool GlobalBodyPlanner::callPlanner() {
     // Call the planner method
     int plan_status = gbpl.findPlan(planner_config_, start_state, goal_state,
                                     state_sequence, action_sequence, tree_pub_);
+  
     newest_plan_.setComputedTimestamp(ros::Time::now());
-
+    std::cout<<"found valid plan"<<std::endl;
     if (plan_status != VALID && plan_status != VALID_PARTIAL) {
       if (plan_status == INVALID_START_STATE) {
         ROS_WARN_THROTTLE(1, "Invalid start state, exiting");
@@ -278,7 +279,7 @@ bool GlobalBodyPlanner::callPlanner() {
       ROS_INFO("partially valid and closer to the goal");
       is_updated = true;
     }
-
+    std::cout<<is_updated<<std::endl;
     if (is_updated) {
       state_sequence_ = state_sequence;
       action_sequence_ = action_sequence;
@@ -351,20 +352,20 @@ void GlobalBodyPlanner::publishCurrentPlan() {
 
   // Check conditions 1) and 2) return if false
   if (current_plan_.isEmpty() ||
-      ((ros::Time::now() - reset_time_).toSec() <= reset_publish_delay_))
+      ((ros::Time::now() - reset_time_).toSec() <= reset_publish_delay_)) {
+
     return;
+  }
 
   // Check condition 3
   if (publish_after_reset_delay_ || newest_plan_ == current_plan_) {
-    // If this is a reset, update the timestamp and switch back to refinement
-    // mode
+    // If this is a reset, update the timestamp and switch back to refinement mode
     if (publish_after_reset_delay_) {
       ROS_INFO("Switching to refinement mode");
       current_plan_.setPublishedTimestamp(ros::Time::now());
       planner_status_ = REFINE;
       publish_after_reset_delay_ = false;
     }
-
     // Declare the messages for interpolated body plan and discrete states,
     // initialize their headers
     quad_msgs::RobotPlan robot_plan_msg;
@@ -400,18 +401,14 @@ void GlobalBodyPlanner::spin() {
   while (ros::ok()) {
     // Process callbacks
     ros::spinOnce();
-    std::cout << "before start and goal" << std::endl;
     // Set the start and goal states
     setStartState();
     setGoalState();
-    std::cout << "after start and goal" <<std::endl;
 
     // Call the planner
     callPlanner();
-    std::cout<<"before publish"<<std::endl;
     // Publish the results if valid
     publishCurrentPlan();
-   std::cout<<"after publish"<<std::endl;
     r.sleep();
   }
 }
