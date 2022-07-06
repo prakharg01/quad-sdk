@@ -65,7 +65,7 @@ bool QuadController::init(hardware_interface::EffortJointInterface* hw,
   }
 
   for (unsigned int i = 0; i < n_joints_; i++) {
-    const auto& joint_name = joint_names_[i];
+    const auto &joint_name = joint_names_[i];
 
     try {
       joints_.push_back(hw->getHandle(joint_name));

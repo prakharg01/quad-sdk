@@ -84,7 +84,6 @@ void QuadEstimatorGroundTruth::OnUpdate() {
   ignition::math::Vector3d lin_vel = body_link->WorldLinearVel();
   // ignition::math::Vector3d ang_vel = body_link->WorldAngularVel();
   ignition::math::Vector3d ang_vel = body_link->RelativeAngularVel();
-
   ignition::math::Pose3d toe0_pose = toe0->WorldPose();
   ignition::math::Vector3d toe0_pos = toe0_pose.Pos();
   ignition::math::Vector3d toe0_vel = toe0->WorldLinearVel();
@@ -100,6 +99,7 @@ void QuadEstimatorGroundTruth::OnUpdate() {
   ignition::math::Pose3d toe3_pose = toe3->WorldPose();
   ignition::math::Vector3d toe3_pos = toe3_pose.Pos();
   ignition::math::Vector3d toe3_vel = toe3->WorldLinearVel();
+
 
   // Update and publish state estimate message
   quad_msgs::RobotState state;

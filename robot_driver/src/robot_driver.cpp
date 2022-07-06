@@ -109,7 +109,8 @@ RobotDriver::RobotDriver(ros::NodeHandle nh, int argc, char **argv) {
   }
 
   // Initialize kinematics object
-  std::cout<<"here"<<std::endl;
+  std::cout << "here #####################" << std::endl;
+
   quadKD_ = std::make_shared<quad_utils::QuadKD>();
 
   // Initialize hardware interface
@@ -124,6 +125,7 @@ RobotDriver::RobotDriver(ros::NodeHandle nh, int argc, char **argv) {
   }
 
   // Initialize leg controller object
+
   initLegController();
 
   // Start sitting
